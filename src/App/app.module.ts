@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DATABASE, BDDType } from '../constants';
+import { BooksController } from '../books/books.controller';
+import { BooksService } from '../books/books.service';
 
 @Module({
   imports: [
@@ -18,7 +20,7 @@ import { DATABASE, BDDType } from '../constants';
     }),
     TypeOrmModule.forFeature([/** les entités à enregistrer en BDD */]),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, BooksController],
+  providers: [AppService, BooksService],
 })
 export class AppModule {}
