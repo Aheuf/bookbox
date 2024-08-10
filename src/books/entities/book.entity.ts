@@ -1,5 +1,6 @@
-import { Column, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity()
 export class Book {
 
   @PrimaryGeneratedColumn()
@@ -20,7 +21,7 @@ export class Book {
   @Column()
   pages:number;
 
-  @Column()
+  @Column("simple-array")
   genres:string[];
 
   @Column()
@@ -29,10 +30,10 @@ export class Book {
   @Column()
   couvertureURL:string;
 
-  @Column()
+  @Column("decimal", {array:true})
   notes:number[];
 
-  @Column()
+  @Column("simple-array")
   commentaires:string[];
 
   @Column()

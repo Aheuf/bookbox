@@ -14,12 +14,13 @@ import { Book } from "./Books/entities/book.entity";
       username: DATABASE.username,
       password: DATABASE.password,
       database: DATABASE.database,
-      entities: [Book],
-      synchronize: true, // Utiliser uniquement en développement pour synchroniser le schéma
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      autoLoadEntities:true,
+      synchronize: true // Utiliser uniquement en développement pour synchroniser le schéma
     }),
-    TypeOrmModule.forFeature([Book]),
+    TypeOrmModule.forFeature([Book])
   ],
   controllers: [BooksController],
-  providers: [BooksService],
+  providers: [BooksService]
 })
 export class AppModule {}
