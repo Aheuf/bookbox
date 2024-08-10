@@ -1,11 +1,9 @@
 import { Module } from "@nestjs/common";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { DATABASE, BDDType } from "../constants";
-import { BooksController } from "../Books/books.controller";
-import { BooksService } from "../Books/books.service";
-import { Book } from "../Books/entities/book.entity";
+import { DATABASE, BDDType } from "./constants";
+import { BooksController } from "./Books/books.controller";
+import { BooksService } from "./Books/books.service";
+import { Book } from "./Books/entities/book.entity";
 
 @Module({
   imports: [
@@ -21,7 +19,7 @@ import { Book } from "../Books/entities/book.entity";
     }),
     TypeOrmModule.forFeature([Book]),
   ],
-  controllers: [AppController, BooksController],
-  providers: [AppService, BooksService],
+  controllers: [BooksController],
+  providers: [BooksService],
 })
 export class AppModule {}

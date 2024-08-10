@@ -1,6 +1,6 @@
 import { PartialType } from "@nestjs/mapped-types";
 import { CreateBookDto } from "./create-book.dto";
-import { ArrayMinSize, IsArray, IsInt, IsNotEmpty, IsString } from "class-validator";
+import { ArrayMinSize, IsArray, IsInt, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 export class UpdateBookDto extends PartialType(CreateBookDto) {
   @IsString()
@@ -34,7 +34,7 @@ export class UpdateBookDto extends PartialType(CreateBookDto) {
   couvertureURL:string;
 
   @IsArray()
-  @IsInt({each:true})
+  @IsNumber({},{each:true})
   notes:number[];
 
   @IsArray()
@@ -43,5 +43,5 @@ export class UpdateBookDto extends PartialType(CreateBookDto) {
 
   @IsString()
   @IsNotEmpty()
-  emplacement:string // à remplacer par le type BookBox je pense
+  emplacement:string; // à remplacer par le type BookBox je pense
 }

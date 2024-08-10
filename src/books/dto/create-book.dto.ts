@@ -1,4 +1,4 @@
-import { ArrayMinSize, IsArray, IsInt, IsNotEmpty, IsString } from "class-validator";
+import { ArrayMinSize, IsArray, IsInt, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 export class CreateBookDto {
 
@@ -33,7 +33,7 @@ export class CreateBookDto {
   couvertureURL:string;
 
   @IsArray()
-  @IsInt({each:true})
+  @IsNumber({},{each:true})
   notes:number[];
 
   @IsArray()
