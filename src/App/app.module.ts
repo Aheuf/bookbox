@@ -1,10 +1,11 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { DATABASE, BDDType } from '../constants';
-import { BooksController } from '../books/books.controller';
-import { BooksService } from '../books/books.service';
+import { Module } from "@nestjs/common";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { DATABASE, BDDType } from "../constants";
+import { BooksController } from "../Books/books.controller";
+import { BooksService } from "../Books/books.service";
+import { Book } from "../Books/entities/book.entity";
 
 @Module({
   imports: [
@@ -15,10 +16,10 @@ import { BooksService } from '../books/books.service';
       username: DATABASE.username,
       password: DATABASE.password,
       database: DATABASE.database,
-      entities: [/** les entités à enregistrer en BDD */],
+      entities: [Book],
       synchronize: true, // Utiliser uniquement en développement pour synchroniser le schéma
     }),
-    TypeOrmModule.forFeature([/** les entités à enregistrer en BDD */]),
+    TypeOrmModule.forFeature([Book]),
   ],
   controllers: [AppController, BooksController],
   providers: [AppService, BooksService],
